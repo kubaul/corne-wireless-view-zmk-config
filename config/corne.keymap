@@ -9,6 +9,13 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
+        behaviors {
+                mth: mt {
+                        compatible = "zmk,behavior-mod-tap";
+                        tapping-term-ms = <200>;
+                };
+        };
+
         keymap {
                 compatible = "zmk,keymap";
 
@@ -20,10 +27,10 @@
 //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
                         display-name = "Base";
                         bindings = <
-   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
-   &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
-                  &kp LGUI &mo 1 &kp SPACE   &kp RET &mo 2 &kp RALT
+   &kp TAB   &kp Q &kp W       &kp E      &kp R      &kp T       &kp Y   &kp U       &kp I       &kp O        &kp P    &kp BSPC
+   &kp LCTRL &kp A &mth LCTRL S &mth LALT D &mth LGUI F &kp G       &kp H   &mth RGUI J  &mth RALT K  &mth RCTRL L  &kp SEMI &kp SQT
+   &kp LSHFT &kp Z &kp X       &kp C      &kp V      &kp B       &kp N   &kp M       &kp COMMA   &kp DOT      &kp FSLH &kp ESC
+                               &kp LGUI   &mo 1      &kp SPACE   &kp RET &mo 2       &kp RALT
                         >;
                 };
                 lower_layer {
@@ -35,8 +42,8 @@
                         display-name = "Lower";
                         bindings = <
    &kp TAB    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
-   &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-   &kp LSHFT  &trans       &trans       &trans       &trans       &trans         &trans   &trans   &trans &trans    &trans &trans
+   &kp LCTRL  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
+   &kp LSHFT  &trans       &trans       &trans       &trans       &bt BT_CLR     &trans   &trans   &trans &trans    &trans &trans
                           	        &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   &kp RALT
                         >;
                 };
